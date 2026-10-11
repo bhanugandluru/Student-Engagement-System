@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="glass-card">
+    <h1>Student Education System Alert</h1>
+    <p>Empowering educators with AI-driven emotional state analysis. Our CNN model analyzes student behavior to suggest
+        optimal learning alerts.</p>
+
+    <div class="dashboard-grid" style="grid-template-columns: 1fr 1fr 1fr 1fr; margin-top: 3rem;">
+        <div class="glass-card" style="padding: 1.5rem;">
+            <h3 style="color: #ef4444;">Active</h3>
+            <p style="font-size: 0.9rem;">High energy, ready for group tasks.</p>
+        </div>
+        <div class="glass-card" style="padding: 1.5rem;">
+            <h3 style="color: #3b82f6;">Focused</h3>
+            <p style="font-size: 0.9rem;">Deep concentration, deep dive work.</p>
+        </div>
+        <div class="glass-card" style="padding: 1.5rem;">
+            <h3 style="color: #22c55e;">Relaxed</h3>
+            <p style="font-size: 0.9rem;">Calm environment, steady progress.</p>
+        </div>
+        <div class="glass-card" style="padding: 1.5rem;">
+            <h3 style="color: #64748b;">Stressed</h3>
+            <p style="font-size: 0.9rem;">Overwhelmed, needs a break alert.</p>
+        </div>
+    </div>
+
+    <div style="margin-top: 3rem;">
+        <a href="{{ url_for('predict') }}" class="btn">Start Prediction</a>
+    </div>
+</div>
+{% endblock %}

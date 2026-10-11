@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="glass-card">
+    <h1>State Prediction</h1>
+    <p>Upload a student image to analyze their educational state.</p>
+
+    <div class="upload-section">
+        <form action="{{ url_for('predict') }}" method="post" enctype="multipart/form-data">
+            <label for="file-upload" class="custom-file-upload">
+                Choose Image File
+            </label>
+            <input id="file-upload" type="file" name="file" onchange="previewImage(event)" />
+            <br>
+            <img id="preview" class="preview-img" style="display: none;">
+            <br>
+            <button type="submit" class="btn">Analyze Student</button>
+        </form>
+    </div>
+
+    {% if result %}
+    <div class="result-card">
+        <h3>Analysis Result</h3>
+        <div class="status-badge {{ result }}">{{ result }}</div>
+        <p>Confidence: <strong>{{ confidence }}</strong></p>
+        {% if image_url %}
+        <div style="margin-top: 1rem;">
+            <img src="{{ url_for('static', filename='uploads/' + image_url.split('/')[-1]) }}" class="preview-img">
+        </div>
+        {% endif %}
+    </div>
+    {% endif %}
+</div>
+
+<script>
+    function previewImage(event) {
+        var reader = new FileReader();
+        reader.onload = function () {
+            var output = document.getElementById('preview');
+            output.src = reader.result;
+            output.style.display = 'inline-block';
+        };
+        reader.readAsDataURL(event.target.files[0]);
+    }
+</script>
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="glass-card">
+    <h1>System Dashboard</h1>
+    <p>Comprehensive performance metrics and dataset analytics.</p>
+
+    <div class="dashboard-grid">
+        <div class="glass-card">
+            <h3>Model Accuracy</h3>
+            <div class="graph-container">
+                <img src="{{ url_for('static', filename=accuracy_graph) }}" alt="Accuracy Graph">
+            </div>
+            <p style="margin-top: 1rem;">Target Accuracy: <span style="color: #22c55e; font-weight: bold;">{{
+                    dataset_details['Target Accuracy'] }}</span></p>
+        </div>
+        <div class="glass-card">
+            <h3>Model Loss</h3>
+            <div class="graph-container">
+                <img src="{{ url_for('static', filename=loss_graph) }}" alt="Loss Graph">
+            </div>
+        </div>
+    </div>
+
+    <div class="glass-card" style="margin-top: 2rem;">
+        <h3>Dataset Details</h3>
+        <ul class="stats-list">
+            <li>
+                <span>Total Samples</span>
+                <strong>{{ dataset_details['Total Samples'] }}</strong>
+            </li>
+            <li>
+                <span>Number of Classes</span>
+                <strong>{{ dataset_details['Classes']|length }}</strong>
+            </li>
+            <li>
+                <span>Classes</span>
+                <strong>{{ dataset_details['Classes']|join(', ') }}</strong>
+            </li>
+            <li>
+                <span>Train / Validation Split</span>
+                <strong>{{ dataset_details['Train/Val Split'] }}</strong>
+            </li>
+            <li>
+                <span>Model Type</span>
+                <strong>Convolutional Neural Network (CNN)</strong>
+            </li>
+        </ul>
+    </div>
+</div>
+{% endblock %}

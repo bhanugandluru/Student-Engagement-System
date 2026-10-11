@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Education Alert System</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <nav>
+    {% if current_user.is_authenticated %}
+    <a href="{{ url_for('home') }}">Home</a>
+    <a href="{{ url_for('predict') }}">Predict</a>
+    <a href="{{ url_for('dashboard') }}">Dashboard</a>
+    <a href="{{ url_for('logout') }}">Logout</a>
+    {% endif %}
+  </nav>
+  <div class="container">
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    {% for message in messages %}
+    <div class="flash-message">{{ message }}</div>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+    {% block content %}{% endblock %}
+  </div>
+
+  {% if not current_user.is_authenticated %}
+  <footer class="right-footer">
+    <div class="auth-group">
+      <a href="{{ url_for('login') }}" class="btn-sm">Login</a>
+      <a href="{{ url_for('signup') }}" class="btn-sm secondary">Sign Up</a>
+    </div>
+  </footer>
+  {% endif %}
+</body>
+
+</html>
