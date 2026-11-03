@@ -17,4 +17,4 @@ A web application built with Flask and TensorFlow (CNN model) to analyze and mon
 ## How to Run Locally
 1. Clone the repository:
    ```bash
-   git clone [https://github.com/bhanugandluru/Student-Engagement-System.git](https://github.com/bhanugandluru/Student-Engagement-System.git)
+   git clone https://github.com/bhanugandluru/Student-Engagement-System.git
