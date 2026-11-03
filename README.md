@@ -1,4 +1,4 @@
-# Student Education System Alert
+# Student Engagement System 
 
 A web application built with Flask and TensorFlow (CNN model) to analyze and monitor student engagement states from uploaded images.
 
